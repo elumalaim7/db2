@@ -28,7 +28,7 @@
 - name: Unarchive the db2 packages on target server
   unarchive:
     src: "{{ tmp_dir }}/{{ db2_package }}"
-    dest: "{{ db2_home_path }}"
+    dest: "{{ tmp_dir }}/db2"
     remote_src: yes 
     force: yes   
   
