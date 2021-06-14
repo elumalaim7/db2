@@ -5,7 +5,7 @@
    state: directory
    mode: 0777
   with_items:
-    - '{{ item }}/db2'
+    - "{{ tmp_dir }}/db2"
 
 - name: Create installation directories and subdirectories
   file: 
@@ -13,9 +13,9 @@
    state: directory 
    mode: 0755
   with_items:
-    - '{{ db2_install_dir }}/ibm/'
-    - '{{ db2_install_dir }}/ibm/db2'
-    - '{{ db2_install_dir }}/ibm/db2/v11.1.4'
+    - "{{ db2_install_dir }}/ibm/"
+    - "{{ db2_install_dir }}/ibm/db2"
+    - "{{ db2_install_dir }}/ibm/db2/v11.1.4"
 
 
 # - name: copy DB2 packages to destination server
