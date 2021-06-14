@@ -26,7 +26,6 @@
   unarchive:
     src: "{{ tmp_dir }}/{{ db2_package }}"
     dest: "{{ tmp_dir }}/db2/{{ db2_package }}"
-    remote_src: True
     mode: 0775
     force: yes   
   
