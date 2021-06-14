@@ -9,10 +9,10 @@
 
 - name: Create temp directories
   file:
-  path: "{{ tmp_dir }}/{{ item.0 }}"
-  state: directory
-  mode: 0777
-  with_nested:
+   path: "{{ tmp_dir }}/{{ item.0 }}"
+   state: directory
+   mode: 0777
+   with_nested:
     - [ 'db2' ]
 
 # - name: copy DB2 packages to destination server
