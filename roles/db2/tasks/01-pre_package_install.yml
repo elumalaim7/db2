@@ -17,7 +17,7 @@
 - name: Add "{{ group_name }}" group 
   group: 
     name: "{{ group_name }}"
-       state: present
+    state: present
 
 - name: Add "{{ user_name }" user
   user:
