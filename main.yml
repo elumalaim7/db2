@@ -1,10 +1,11 @@
 --- 
 - name: DB2 install client installation
-  hosts: "{{ envir }}:&dev"
+  hosts: "{{ dev_hostname }}:&{{ envir }}:&dev"
   gather_facts: true
   become: true
   become_method: sudo
-  
+  vars_files:
+    - vars_files/{{ inventory_hostname }}/redhat/{{ envir }}.yml"
   roles: 
     - db2
   tags: db2client
