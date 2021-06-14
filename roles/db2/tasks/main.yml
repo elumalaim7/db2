@@ -2,10 +2,10 @@
 # Include variables at the start so they're in scope
   
 - include: 01-pre_package_install.yml
-  when: ansible_os_family == "centos"
+  when: ansible_os_family == "CentOS"
 
 - include: 02-db2_download.yml
-  when: ansible_os_family == "centos"
+  when: ansible_os_family == "CentOS"
 
 - include: 03-db2_install.yml  
-  when: ansible_os_family == "centos"
+  when: ansible_os_family == "CentOS"
