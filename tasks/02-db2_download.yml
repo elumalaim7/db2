@@ -1,0 +1,35 @@
+---
+- name: Create installation directories and subdirectories
+  file:
+    path: "{{ db2_install_dir }}/{{ item.0 }}"
+    state: directory
+    mode: 0777
+    with_nested:
+    - ['ibm, 'db2', 'v11.1.4' ]
+
+- name: Create temp directories
+  file:
+    path: "{{ tmp_dir }}/{{ item.0 }}"
+    state: directory
+    mode: 0777
+    with_nested:
+    - [ 'db2' ]
+
+# - name: copy DB2 packages to destination server
+#   copy:
+#     src: "files/{{ db2_package }}"
+#     dest: "{{ tmp_dir }}/db2/{{ db2_package }}"
+#     mode: 0755
+#     force: yes 
+
+- name: Unarchive the db2 packages on target server
+  unarchive:
+    src: "{{ tmp_dir }}/{{ db2_package }}"
+    dest: "{{ tmp_dir }}/db2/{{ db2_package }}"
+    mode: 0775
+    force: yes   
+  
+  
+
+    
+    

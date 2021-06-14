@@ -1,0 +1,12 @@
+---
+# resp:
+#    PROD: "CLIENT"
+#    FILE: "/opt/ibm/db2/V10.5"
+#    LIC_AGREEMENT: "ACCEPT" # ACCEPT or DECLINE
+#    INSTALL_TYPE: "TYPICAL" # TYPICAL, COMPACT, CUSTOM
+
+db2_package: v11.1.4fp6_linuxx64_client.tar
+tmp_dir: /tmp
+db2_install_dir: /opt 
+username: db2inst1
+groupname: db2inst1

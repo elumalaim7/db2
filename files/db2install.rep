@@ -1,0 +1,5 @@
+# Response parameter to install DB2 Client
+PROD = CLIENT
+FILE = /opt/ibm/db2/V11.1/
+LIC_AGREEMENT = "ACCEPT" ** ACCEPT or DECLINE
+INSTALL_TYPE = "TYPICAL" ** TYPICAL, COMPACT, CUSTOM

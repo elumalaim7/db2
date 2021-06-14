@@ -1,0 +1,27 @@
+---
+- name: Install required packages
+  yum:
+    name: "{{ item }}"
+    state: installed
+  loop:
+    - pam
+    - pam-devel.i686
+    - libaio
+    - compat-libstdc++-33.i686
+    - compat-libstdc++-33
+    - libstdc++-devel.i686
+    - libstdc++
+    - ksh
+    - unzip
+
+group: Add "{{ groupname }}" group
+       name: "{{ groupname }}"
+       state: present
+
+- name: Add "{{ username }" user
+  user:
+    name: "{{ username }}"
+    comment: db2 account
+    group: "{{ groupname }}"
+    shell: /bin/bash
+    state: present
