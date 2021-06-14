@@ -1,10 +1,10 @@
 --- 
-- 
+- name: DB2 install client installation
+  hosts: "{{ envir }}:&dev"
+  gather_facts: true
   become: true
   become_method: sudo
-  gather_facts: true
-  hosts: "{{ envir }}:&dev"
-  name: "db2 client installation"
+  
   roles: 
     - db2
   tags: db2client
