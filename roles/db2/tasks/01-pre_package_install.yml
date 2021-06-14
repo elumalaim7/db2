@@ -14,7 +14,8 @@
     - ksh
     - unzip
 
-group: Add "{{ groupname }}" group
+- name: Add "{{ groupname }}" group 
+  group: 
        name: "{{ groupname }}"
        state: present
 
