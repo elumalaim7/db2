@@ -1,11 +1,6 @@
 ---
-- name: Execute the db2 client installation
-  command: "{{ tmp_dir }}/db2//client/db2setup -r {{ tmp_dir }}/db2/client/db2in.rsp"
-  register: db2_client_insallation_status
-
-- name: Print DB2 Installation output
-  debug:
-    msg: "{{ db2_client_installation_status }}" 
+# - name: Execute the db2 client installation
+#   command: "{{ tmp_dir }}/db2//client/db2setup -r {{ tmp_dir }}/db2/client/db2in.rsp"
 
 - name: verify DB2 client installation
   command: "{{ db2_home_path }}/bin/db2level"
