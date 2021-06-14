@@ -1,9 +1,9 @@
 ---
 - name: Create installation directories and subdirectories
   file:
-    path: "{{ db2_install_dir }}/{{ item.0 }}"
+    path: "{{ db2_install_dir }}/{{ item }}"
     state: directory
-    mode: 0777
+    mode: 0755
     with_nested:
     - ['ibm', 'db2', 'v11.1.4' ]
 
