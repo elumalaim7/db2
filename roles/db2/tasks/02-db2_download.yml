@@ -15,7 +15,6 @@
   with_items:
     - "{{ db2_install_dir }}/ibm/"
     - "{{ db2_install_dir }}/ibm/db2"
-    - "{{ db2_install_dir }}/ibm/db2/v11.1.4"
 
 
 # - name: copy DB2 packages to destination server
