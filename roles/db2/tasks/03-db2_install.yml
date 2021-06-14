@@ -16,7 +16,7 @@
     msg: "{{ db2_client_level }}" 
 
 - name: verify DB2 instance creation status
-  shell: "{{ db2_install_dir }}"/bin/db2ilist
+  command: "{{ db2_install_dir }}"/bin/db2ilist
   register: db2_client_instance_status
 
 - name: Print DB2 instance output
