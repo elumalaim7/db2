@@ -1,13 +1,10 @@
----
-# tasks file for db2
-# This is the most rich example, with all posible customizations
-  - name db2 client installation  
-    hosts: "{{ dev }}"
-    gather_facts: yes 
-    become: true
-    become_method: sudo
-  
-    roles:
-      - db2
-    tags: db2client  
-    
+--- 
+- 
+  become: true
+  become_method: sudo
+  gather_facts: true
+  hosts: "{{ envir }}:&dev"
+  name: "db2 client installation"
+  roles: 
+    - db2
+  tags: db2client
