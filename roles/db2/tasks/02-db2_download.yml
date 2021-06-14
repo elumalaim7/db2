@@ -5,7 +5,7 @@
     state: directory
     mode: 0777
     with_nested:
-    - ['ibm, 'db2', 'v11.1.4' ]
+    - ['ibm', 'db2', 'v11.1.4' ]
 
 - name: Create temp directories
   file:
