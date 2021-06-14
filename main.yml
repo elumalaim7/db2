@@ -1,6 +1,6 @@
 --- 
 - name: DB2 client installation
-  hosts: "{{ dev_hostname }}:&{{ envir }}"
+  hosts: "{{ envir }}:&dev"
   gather_facts: yes 
   become: true
   become_method: sudo
