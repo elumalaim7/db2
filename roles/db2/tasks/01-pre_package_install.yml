@@ -19,7 +19,7 @@
     name: "{{ group_name }}"
     state: present
 
-- name: Add "{{ user_name }" user
+- name: Add "{{ user_name }}" user
   user:
     name: "{{ user_name }}"
     groups: "{{ group_name }}"
