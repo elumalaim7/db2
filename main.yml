@@ -1,7 +1,7 @@
 --- 
-- name: DB2 install client installation
+- name: DB2 client installation
   hosts: "{{ dev_hostname }}:&{{ envir }}:&dev"
-  gather_facts: true
+  gather_facts: yes 
   become: true
   become_method: sudo
   vars_files:

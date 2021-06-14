@@ -11,3 +11,4 @@ db2_install_dir: /opt
 db2_home_path: /opt/ibm/db2/v11.1.4 
 username: db2inst1
 groupname: db2inst1
+envir: dev
