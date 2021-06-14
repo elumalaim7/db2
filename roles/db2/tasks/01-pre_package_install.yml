@@ -14,15 +14,15 @@
     - ksh
     - unzip
 
-- name: Add "{{ groupname }}" group 
+- name: Add "{{ group_name }}" group 
   group: 
-       name: "{{ groupname }}"
+    name: "{{ group_name }}"
        state: present
 
-- name: Add "{{ username }" user
+- name: Add "{{ user_name }" user
   user:
-    name: "{{ username }}"
+    name: "{{ user_name }}"
     comment: db2 account
-    group: "{{ groupname }}"
+    group: "{{ group_name }}"
     shell: /bin/bash
     state: present

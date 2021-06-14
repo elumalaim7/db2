@@ -9,6 +9,6 @@ db2_package: v11.1.4fp6_linuxx64_client.tar
 tmp_dir: /tmp
 db2_install_dir: /opt
 db2_home_path: /opt/ibm/db2/v11.1.4 
-username: db2inst1
-groupname: db2inst1
+user_name: db2inst1
+group_name: db2inst1
 envir: dev
