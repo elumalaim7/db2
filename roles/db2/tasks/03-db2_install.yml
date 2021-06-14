@@ -8,7 +8,7 @@
     msg: "{{ db2_client_installation_status }}" 
 
 - name: verify DB2 client installation
-  shell: "{{ db2_install_dir }}"/bin/db2level
+  command: "{{ db2_install_dir }}"/bin/db2level
   register: db2_client_level
 
 - name: Print DB2 level output
