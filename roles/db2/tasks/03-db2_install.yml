@@ -1,6 +1,6 @@
 ---
 - name: Execute the db2 client installation
-  command: "{{ db2_home_path }}/client/db2etup -r db2in.rsp"
+  command: "{{ db2_home_path }}/client/db2setup -r db2in.rsp"
   register: db2_client_insallation_status
 
 - name: Print DB2 Installation output
