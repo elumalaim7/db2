@@ -1,6 +1,6 @@
 ---
 - name: Execute the db2 client installation
-  command: "{{ db2_home_path }}/db2/client/db2_install -r db2in.rsp"
+  command: "{{ db2_home_path }}/client/db2_install -r db2in.rsp"
   register: db2_client_insallation_status
 
 - name: Print DB2 Installation output
@@ -8,7 +8,7 @@
     msg: "{{ db2_client_installation_status }}" 
 
 - name: verify DB2 client installation
-  command: "{{ db2_home_path }}/bin/db2level"
+  command: "{{ db2_home_path }}/client/bin/db2level"
   register: db2_client_level
 
 - name: Print DB2 level output
@@ -16,7 +16,7 @@
     msg: "{{ db2_client_level }}" 
 
 - name: verify DB2 instance creation status
-  command: "{{ db2_home_path }}/bin/db2ilist"
+  command: "{{ db2_home_path }}/client/bin/db2ilist"
   register: db2_client_instance_status
 
 - name: Print DB2 instance output
