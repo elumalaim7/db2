@@ -22,7 +22,7 @@
 - name: Add "{{ user_name }" user
   user:
     name: "{{ user_name }}"
-    comment: db2 account
+    comment: "db2 account"
     groups: "{{ group_name }}"
     shell: /bin/bash
     state: present
