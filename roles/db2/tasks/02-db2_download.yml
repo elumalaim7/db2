@@ -12,7 +12,7 @@
    path: "{{ item }}"
    state: directory 
    mode: 0755
-  with_item:
+  with_items:
     - '{{ db2_install_dir }}/ibm/'
     - '{{ db2_install_dir }}/ibm/db2'
     - '{{ db2_install_dir }}/ibm/db2/v11.1.4'
