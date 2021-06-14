@@ -1,7 +1,7 @@
 ---
 - name: Create installation directories and subdirectories
   file: 
-   path: "{{ db2_install_dir }}/{{ item[0] }}"
+   path: "{{ db2_install_dir }}/{{ item[7] }}"
    state: directory 
    mode: 0755
   with_nested:
@@ -9,7 +9,7 @@
 
 - name: Create temp directories
   file:
-   path: "{{ tmp_dir }}/{{ item[0] }}"
+   path: "{{ tmp_dir }}/{{ item[3] }}"
    state: directory
    mode: 0777
   with_nested:
