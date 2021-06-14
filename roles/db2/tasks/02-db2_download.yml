@@ -1,19 +1,21 @@
 ---
+
+- name: Create temp directories
+  file:
+   path: "{{ tmp_dir }}/{{ item[3] }}"
+   state: directory
+   mode: 0777
+  with_nested:
+    - [ 'db2' ]
+    
 - name: Create installation directories and subdirectories
   file: 
-   path: "{{ db2_install_dir }}/{{ item[*] }}"
+   path: "{{ db2_install_dir }}/{{ item[3] }}"
    state: directory 
    mode: 0755
   with_nested:
     - [ 'ibm', 'db2', 'v11.1.4' ]
 
-- name: Create temp directories
-  file:
-   path: "{{ tmp_dir }}/{{ item[*] }}"
-   state: directory
-   mode: 0777
-  with_nested:
-    - [ 'db2' ]
 
 # - name: copy DB2 packages to destination server
 #   copy:
