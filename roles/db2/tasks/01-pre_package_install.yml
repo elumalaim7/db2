@@ -25,4 +25,3 @@
     comment: "db2 account"
     groups: "{{ group_name }}"
     shell: /bin/bash
-    state: present
