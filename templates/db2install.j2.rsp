@@ -40,6 +40,5 @@ INSTANCE                  = {{inst.instance}}
 {% endfor %}
 {% endif %}
 {% endif %}
-{% endif %}
-
+{% endfor %}
 
