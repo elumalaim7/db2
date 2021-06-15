@@ -5,8 +5,13 @@
   import_tasks: 01-pre_package_install.yml
 
 - name: Download Packages  
-  import_tasks: 02-db2_download.yml
+  import_tasks: 02-db2-download.yml
 
 - name: Install DB2 
-  import_tasks: 03-db2_install.yml  
+  import_tasks: 03-db2-install.yml  
   
+- name: Setup DB2 Instance
+  import_tasks: 04-db2-instance.yml  
+
+- name: Create DB2 Instance
+  import_tasks: 05-db2-instance-users.yml 
