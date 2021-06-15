@@ -1,5 +1,5 @@
 ---
-- name: Create temp directories
+- name: Create temp directories...
   file:
    path: "{{ item }}"
    state: directory
@@ -7,7 +7,7 @@
   with_items:
     - "{{ tmp_dir }}/db2"
 
-- name: Create installation directories and subdirectories
+- name: Create installation directories and subdirectories...
   file: 
    path: "{{ item }}"
    state: directory 
@@ -24,18 +24,18 @@
 #     mode: 0755
 #     force: yes 
 
-- name: Unarchive the db2 packages on target server
+- name: Unarchive the db2 packages on target server...
   unarchive:
     src: "{{ tmp_dir }}/{{ db2_package }}"
     dest: "{{ tmp_dir }}/db2"
     remote_src: yes 
     # force: yes   
   
-- name: Parse response file for DB2 client installation
+- name: Parse response file for DB2 client installation...
   template: src=db2install.j2.rsp dest="{{ tmp_dir }}/db2/db2install.rsp"
   tags: parse
   
-- name: Parse response file for DB2 client Instance 
+- name: Parse response file for DB2 client Instance... 
   template: src=db2instance.j2.rsp dest="{{ tmp_dir }}/db2/db2instance.rsp"
   tags: parse
 

@@ -1,4 +1,4 @@
-- name: Creating DB2 Instance Users
+- name: Creating DB2 Instance User...
   user:
     name: "{{item.name}}"
     group: "{{item.group_name}}"

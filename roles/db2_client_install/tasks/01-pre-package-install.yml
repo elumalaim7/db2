@@ -1,5 +1,5 @@
 ---
-- name: Install required packages
+- name: Install required packages...
   yum:
     name: "{{ item }}"
     state: installed
@@ -14,12 +14,12 @@
     - ksh
     - unzip
 
-- name: Add "{{ group_name }}" group 
+- name: Add "{{ group_name }}" group... 
   group: 
     name: "{{ group_name }}"
     state: present
 
-- name: Add "{{ user_name }}" user
+- name: Add "{{ user_name }}" user...
   user:
     name: "{{ user_name }}"
     group: "{{ group_name }}"

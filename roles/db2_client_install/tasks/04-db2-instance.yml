@@ -1,5 +1,5 @@
 ---
-- name: Execute the db2 client installation approximately 10 mins
+- name: Execute the db2 client Instance Creation...
   command: "{{ tmp_dir }}/db2/client/db2setup -r {{ tmp_dir }}/db2/db2instance.rsp"
   register: db2_instance_status
 
