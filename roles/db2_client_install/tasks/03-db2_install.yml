@@ -10,13 +10,16 @@
   debug: var=db2_setup
   tags: download
 
-# - name: verify DB2 client installation
-#   command: "{{ db2_home_path }}/bin/db2level"
-#   register: db2_client_level
+- name: Validating the current installation
+    command: "{{resp.file}}/bin/db2val -o"
+    register: db2_val
+    failed_when: "'DBI1335I' not in db2_val.stdout"
+    changed_when: False
+    tags: ['install', 'validate']
 
-# - name: Print DB2 level output
-#   debug:
-#     msg: "{{ db2_client_level }}" 
+- name: Validate results
+    debug: var=db2_val
+    tags: download
 
 - name: verify DB2 instance creation status
   command: "{{ db2_home_path }}/bin/db2ilist"

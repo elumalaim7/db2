@@ -9,5 +9,5 @@
   group: 
     name: "{{ group_name }}"
     state: absent
-    remove: yes 
+    
 
