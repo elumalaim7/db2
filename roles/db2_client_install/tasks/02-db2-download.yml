@@ -33,11 +33,11 @@
   
 - name: Parse response file for DB2 client installation...
   template: src=db2install.j2.rsp dest="{{ tmp_dir }}/db2/db2install.rsp"
-  tags: parse
+  tags: parse_db2_install
   
 - name: Parse response file for DB2 client Instance... 
   template: src=db2instance.j2.rsp dest="{{ tmp_dir }}/db2/db2instance.rsp"
-  tags: parse
+  tags: parse_db2_instance
 
 
     
