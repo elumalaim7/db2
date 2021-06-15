@@ -31,8 +31,6 @@ INSTALL_TYPE              = {{resp.install_type}}
 INSTANCE                  = {{inst.instance}}
 {{inst.instance}}.NAME             = {{inst.name}} 
 {{inst.instance}}.GROUP_NAME              = {{inst.group_name}} 
-{{inst.instance}}.FENCED_USERNAME  = {{inst.fenced_username}}
-{{inst.instance}}.FENCED_GROUP_NAME = {{inst.fenced_group_name}}
 
 {%if inst.options is defined %}
 ** Instance Optionals
