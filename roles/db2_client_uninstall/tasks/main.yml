@@ -6,7 +6,8 @@
 - name: Drop db2 instance
   import_tasks: 02-drop-db2-instance.yml
   tags: instance_drop
-
+  set_fact: flag="failed"
+  
 - name: uninstall db2 client
   import_tasks: 03-uninstall-db2-client.yml
   tags: uninstall
