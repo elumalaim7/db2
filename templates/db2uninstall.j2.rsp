@@ -1,3 +1,2 @@
 ** General Options
-REMOVE_PROD  = {{resp.prod}}
-FILE         = {{resp.file}}
+REMOVE_PROD                      = {{resp.prod}}
