@@ -1,28 +1,21 @@
 ---
-# resp:
-#    PROD: "CLIENT"
-#    FILE: "/opt/ibm/db2/V10.5"
-#    LIC_AGREEMENT: "ACCEPT" # ACCEPT or DECLINE
-#    INSTALL_TYPE: "TYPICAL" # TYPICAL, COMPACT, CUSTOM
-
+envir: dev
 db2_package: v11.1.4fp6_linuxx64_client.tar.gz
 tmp_dir: /tmp
 db2_install_dir: /opt
 db2_home_path: /opt/ibm/db2/v11.1.4 
+
+# DB2 Installation and Instance ID
 user_name: db2inst1
 group_name: db2inst1
-envir: dev
 
+# reponse parameter for DB2 client installation
 resp:
   prod: "CLIENT"
   file: "/opt/ibm/db2/v11.1.4"
   lic_agreement: "ACCEPT" # ACCEPT or DECLINE
   install_type: "TYPICAL" # TYPICAL, COMPACT, CUSTOM
 
-  # This controls if the role should cache yum/apt
-make_cache: no
-
-# List of instances to be created
 # NOTE: root installation is required
 db2_instances:
   #Those three params are mandatory to create a DB2 instance

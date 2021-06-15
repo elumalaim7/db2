@@ -23,22 +23,3 @@ INSTALL_TYPE              = {{resp.install_type}}
 *LANG                     = TW              ** Traditional Chinese (zh_TW)
 
 
-{%for inst in db2_instances %}
-
-{%if create_instances == true %}
-** Instance Creation Settings
-** --------------------------
-INSTANCE                  = {{inst.instance}}
-{{inst.instance}}.NAME             = {{inst.name}} 
-{{inst.instance}}.GROUP_NAME              = {{inst.group_name}} 
-
-{%if inst.options is defined %}
-** Instance Optionals
-** ---------------------------
-{% for key, value in inst.options.iteritems() %}
-{{inst.instance | upper}}.{{ key | upper}}             = {{ value }}
-{% endfor %}
-{% endif %}
-{% endif %}
-{% endfor %}
-

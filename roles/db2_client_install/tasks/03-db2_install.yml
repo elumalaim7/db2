@@ -1,13 +1,13 @@
 ---
-- name: Execute the db2 client installation
-  command: "{{ tmp_dir }}/db2/client/db2setup -r {{ tmp_dir }}/db2/db2in.rsp"
+- name: Execute the db2 client installation approximately 10 mins
+  command: "{{ tmp_dir }}/db2/client/db2setup -r {{ tmp_dir }}/db2/db2install.rsp"
   register: db2_client_setup
   args: 
       creates: "{{resp.file}}"
   tags: install
 
 - name: Setup results
-  debug: var=db2_setup
+  debug: var=db2_client_setup
   tags: download
 
 - name: Validating the current installation
@@ -21,11 +21,5 @@
   debug: var=db2_val
   tags: download
 
-- name: verify DB2 instance creation status
-  command: "{{ db2_home_path }}/bin/db2ilist"
-  register: db2_client_instance_status
 
-- name: Print DB2 instance output
-  debug:
-    msg: "{{ db2_client_instance_status }}" 
 
