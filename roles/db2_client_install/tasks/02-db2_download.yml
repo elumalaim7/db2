@@ -32,7 +32,7 @@
     force: yes   
   
 - name: Parse response file for DB2 client installation
-  template: src=db2in.j2.rsp dest="{{ tmp_dir }}/db2/db2in.rsp"
+  template: src=db2install.j2.rsp dest="{{ tmp_dir }}/db2/db2in.rsp"
   tags: parse
   
 
