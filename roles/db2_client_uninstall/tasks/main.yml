@@ -1,0 +1,3 @@
+---
+- name: db2 instance drop and uninstall
+  import_tasks: 01-uninstall-instance.yml
