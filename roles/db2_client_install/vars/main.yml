@@ -13,3 +13,23 @@ user_name: db2inst1
 group_name: db2inst1
 envir: dev
 
+resp:
+  prod: "CLIENT"
+  file: "/opt/ibm/db2/v11.1.4"
+  lic_agreement: "ACCEPT" # ACCEPT or DECLINE
+  install_type: "TYPICAL" # TYPICAL, COMPACT, CUSTOM
+
+  # This controls if the role should cache yum/apt
+make_cache: no
+
+# List of instances to be created
+# NOTE: root installation is required
+db2_instances:
+  #Those three params are mandatory to create a DB2 instance
+  - instance: "DB2INST"
+    name: "{{ user_name }}"
+    group_name: "{{ group_name }}"
+
+# Create the instances listed in 'db2_instances' variable.
+# This can be set to false for installation without any instance.
+create_instances: true

@@ -1,0 +1,9 @@
+- name: Creating DB2 Instance Users
+  user:
+    name: "{{item.name}}"
+    group: "{{item.group_name}}"
+    password: "{{ item.password | default('ldUMKEu7/QCAY')}}"
+    home: "{{ item.home_directory | default(omit) }}"
+    uid: "{{ item.uid | default(omit) }}"
+    createhome: "{{ item.createhome | default(true) }}"
+  with_items: "{{ db2_instances }}"
