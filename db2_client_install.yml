@@ -7,7 +7,5 @@
   vars_files:
     - vars_files/{{ inventory_hostname }}/dev.yml
   roles: 
-    - db2_client_install
-  tags: db2install
     - db2_client_uninstall
   tags: db2uninstall  

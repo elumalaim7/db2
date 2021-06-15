@@ -1,0 +1,11 @@
+--- 
+- name: DB2 client uninstall
+  hosts: "{{ envir }}:&dev"
+  gather_facts: yes 
+  become: true
+  become_method: sudo
+  vars_files:
+    - vars_files/{{ inventory_hostname }}/dev.yml
+  roles: 
+    - db2_client_uninstall
+  tags: db2uninstall 
