@@ -6,7 +6,4 @@
 - name: Print DB2 drop output
   debug:
     msg: "{{ db2_instance_drop }}"
-  fail:
-    msg: "No DB2 instance skipping..."
-  when: "db2_instance_drop.rc == 1"
 
