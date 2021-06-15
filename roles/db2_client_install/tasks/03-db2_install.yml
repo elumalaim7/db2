@@ -18,8 +18,8 @@
   tags: ['install', 'validate']
 
 - name: Validate results
-    debug: var=db2_val
-    tags: download
+  debug: var=db2_val
+  tags: download
 
 - name: verify DB2 instance creation status
   command: "{{ db2_home_path }}/bin/db2ilist"
