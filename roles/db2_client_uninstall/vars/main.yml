@@ -7,4 +7,5 @@ user_name: db2inst1
 group_name: db2inst1
 envir: dev
 db2_instance_path: /opt/ibm/db2/v11.1.4/instance
+db2_package_dir: /tmp/db2
 
