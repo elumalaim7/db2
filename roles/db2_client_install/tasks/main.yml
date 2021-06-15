@@ -2,7 +2,7 @@
 # Include variables at the start so they're in scope
   
 - name: Install Prerequisties
-  import_tasks: 01-pre_package_install.yml
+  import_tasks: 01-pre-package-install.yml
 
 - name: Download Packages  
   import_tasks: 02-db2-download.yml
