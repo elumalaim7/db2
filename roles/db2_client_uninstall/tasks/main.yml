@@ -11,3 +11,5 @@
 - name: Remove db2 client installation packages
   import_tasks: 04-remove-db2-client-packages.yml
 
+- name: Remove db2 account and group
+  import_tasks: 05-remove-db2-accounts.yml
