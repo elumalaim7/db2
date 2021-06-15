@@ -1,20 +1,20 @@
 ---
 - name: Download db2 Packages
   import_tasks: 01-download-db2-package.yml
-  tag: download
+  tags: download
 
 - name: Drop db2 instance
   import_tasks: 02-drop-db2-instance.yml
-  tag: instance_drop
+  tags: instance_drop
 
 - name: uninstall db2 client
   import_tasks: 03-uninstall-db2-client.yml
-  tag: uninstall
+  tags: uninstall
 
 - name: Remove db2 client installation packages
   import_tasks: 04-remove-db2-client-packages.yml
-  tag: remove_client_package
+  tags: remove_client_package
 
 - name: Remove db2 account and group
   import_tasks: 05-remove-db2-accounts.yml
-  tag: db2_account_remove
+  tags: db2_account_remove

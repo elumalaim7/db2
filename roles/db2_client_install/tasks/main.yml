@@ -3,20 +3,20 @@
   
 - name: Install Prerequisties
   import_tasks: 01-pre-package-install.yml
-  tag: precheck
+  tags: precheck
 
 - name: Download Packages  
   import_tasks: 02-db2-download.yml
-  tag: db2_download
+  tags: db2_download
 
 - name: Install DB2 
   import_tasks: 03-db2-install.yml  
-  tag: db_install
+  tags: db_install
 
 - name: Setup DB2 Instance
   import_tasks: 04-db2-instance.yml  
-  tag: db2_instance_setup
+  tags: db2_instance_setup
 
 - name: Create DB2 Instance
   import_tasks: 05-db2-instance-users.yml 
-  tag: db2_instance_user
+  tags: db2_instance_user
