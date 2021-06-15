@@ -1,8 +1,27 @@
 ---
 - name: Execute the db2 client installation
-  command: "{{ tmp_dir }}/db2/client/db2setup 
+  command: "{{ tmp_dir }}/db2/client/db2setup" 
   # command: "{{ tmp_dir }}/db2/client/db2setup -r {{ tmp_dir }}/db2/client/db2in.rsp"
 
+# Response file keywords: https://www-01.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.qb.server.doc/doc/r0007505.html
+resp:
+  PROD: "CLIENT"
+  FILE: "/opt/ibm/db2/V11.1"
+  LIC_AGREEMENT: "ACCEPT" # ACCEPT or DECLINE
+  INSTALL_TYPE: "TYPICAL" # TYPICAL, COMPACT, CUSTOM
+  
+db2_instances:
+  #Those five params are mandatory to create a DB2 instance
+  - instance: "DB2INST"
+    name: "db2inst1"
+    options:
+            autostart: "YES" # YES or NO
+            start_during_install: "YES" # YES or NO
+
+
+# Create the instances listed in 'db2_instances' variable.
+# This can be set to false for installation without any instance.
+create_instances: true
 
 # - name: verify DB2 client installation
 #   command: "{{ db2_home_path }}/bin/db2level"
