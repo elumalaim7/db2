@@ -1,4 +1,10 @@
 
+** General Options
+PROD                      = {{resp.prod}}
+FILE                      = {{resp.file}}
+LIC_AGREEMENT             = {{resp.lic_agreement}}
+INSTALL_TYPE              = {{resp.install_type}}
+
 {%for inst in db2_instances %}
 
 {%if create_instances == true %}
