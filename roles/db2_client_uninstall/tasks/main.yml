@@ -1,6 +1,6 @@
 ---
 - name: Download db2 Packages
-  import_tasks: 01-download-db2-packages.yml
+  import_tasks: 01-download-db2-package.yml
 
 - name: Drop db2 instance
   import_tasks: 02-drop-instance.yml
