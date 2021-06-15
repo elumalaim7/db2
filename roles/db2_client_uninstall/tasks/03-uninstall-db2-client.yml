@@ -1,6 +1,6 @@
 ---
-- name: Execute the db2 client installation
-  command: "{{ tmp_dir }}/db2/client/db2_deinstall -r {{ tmp_dir }}/db2/db2uninstall.rsp"
+- name: Execute the db2 client uninstall approximately 10 mins
+  command: "{{ tmp_dir }}/db2/client/db2_deinstall -r {{ tmp_dir }}/db2/db2uninstall.rsp -b {{ db2_home_path }}"
   register: db2_instance_uninstall
 
 - name: Print DB2 level output
