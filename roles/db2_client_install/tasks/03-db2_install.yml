@@ -9,19 +9,6 @@
 - name: Setup results
   debug: var=db2_setup
   tags: download
-  
-db2_instances:
-  #Those five params are mandatory to create a DB2 instance
-  - instance: "DB2INST"
-    name: "db2inst1"
-    options:
-        autostart: "YES" # YES or NO
-        start_during_install: "YES" # YES or NO
-
-
-# Create the instances listed in 'db2_instances' variable.
-# This can be set to false for installation without any instance.
-create_instances: true
 
 # - name: verify DB2 client installation
 #   command: "{{ db2_home_path }}/bin/db2level"
