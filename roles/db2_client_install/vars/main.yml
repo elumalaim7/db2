@@ -6,8 +6,8 @@ db2_install_dir: /opt
 db2_home_path: /opt/ibm/db2/v11.1.4 
 
 # DB2 Installation and Instance ID
-user_name: db2inst12345
-group_name: db2inst12345
+user_name: db2inst1
+group_name: db2inst1
 
 # reponse parameter for DB2 client installation
 resp:
