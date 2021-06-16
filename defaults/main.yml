@@ -16,7 +16,7 @@ make_cache: no
 db2_instances:
   #Those five params are mandatory to create a DB2 instance
   - instance: "DB2INST"
-    name: "db2inst1"
+    name: "db2inst12345"
     options:
             autostart: "YES" # YES or NO
             start_during_install: "YES" # YES or NO
