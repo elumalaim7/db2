@@ -47,12 +47,33 @@
     line: 'INSTHOME=/home/{{ standard_user }}'
     backrefs: yes
   
+  - name: replace line DB2INSTANCE={{ user_name }} in /home/{{ standard_user }}/sqllib/db2cshrc
+  lineinfile: 
+    path: /home/{{ standard_user }}/sqllib/db2cshrc 
+    regexp: '^(.*)setenv DB2INSTANCE {{ user_name }}(.*)$' 
+    line: 'setenv DB2INSTANCE {{ standard_user }}'
+    backrefs: yes
+  
+
+- name: replace line "{{ standard_user }}" in /home/{{ standard_user }}/sqllib/db2cshrc
+  lineinfile: 
+    path: /home/{{ standard_user }}/sqllib/db2cshrc 
+    regexp: '^(.*)setenv INSTHOME /home/{{ user_name }}(.*)$' 
+    line: 'setenv INSTHOME /home/{{ standard_user }}'
+    backrefs: yes
 
 - name: move the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
   command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/sqllib"
   register: db2_instance_move
   
-
+- name: recursively update "{{ db2_home }}"/sqllib directory owner
+  file:
+    path: "{{ db2_home }}"/sqllib
+    state: directory
+    recurse: yes
+    owner: "{{ standard_user }}"
+  tags: permission
+  
 - name: Print instance move to "{{ db2_home }}" output...
   debug:
     msg: "{{ db2_instance_move }}" 
