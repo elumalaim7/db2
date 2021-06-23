@@ -1,6 +1,6 @@
 ---
 - name: move the "{{ user_name }}" instance to "{{ standard_user }}"...
-  command: mv "{{ db2_inst_home }}"/sqllib /home/"{{ standard_user }}" 
+  command: mv "{{ db2_inst_home }}"/sqllib /home/"{{ standard_user }}/sqllib" 
   register: db2_rename_instance
 
 - name: Print rename instance output...
