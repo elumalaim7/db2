@@ -89,3 +89,10 @@
   register: db2_instance_drop
   ignore_errors: yes
   tags: test 
+
+- name: Remove "{{ user_name }}" user
+  user:
+    name: "{{ user_name }}"
+    state: absent
+    remove: yes 
+  tags: test
