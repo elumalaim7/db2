@@ -58,7 +58,7 @@
     msg: "{{ db2_instance_move }}" 
   
 - name: Validating DB2 
-  command: "{{ db2_home }}"/sqllib/bin/db2val -o
+  command: "{{ db2_home }}/sqllib/bin/db2val -o"
   register: db2_val
   tags: test
 
