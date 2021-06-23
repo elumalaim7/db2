@@ -26,4 +26,11 @@
     shell: /bin/bash
     comment: "db2 account"
     state: present
-    
+
+- name: Add "{{ standard_user }}" user...
+  user:
+    name: "{{ standard_user }}"
+    group: "{{ group_name }}"
+    shell: /bin/bash
+    comment: "db2 instance account"
+    state: present    
