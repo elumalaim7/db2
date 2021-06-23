@@ -68,7 +68,7 @@
   
 - name: recursively update "{{ db2_home }}"/sqllib directory owner
   file:
-    path: "{{ db2_home }}"/sqllib
+    path: "{{ db2_home }}/sqllib"
     state: directory
     recurse: yes
     owner: "{{ standard_user }}"
