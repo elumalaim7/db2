@@ -90,6 +90,11 @@
   ignore_errors: yes
   tags: test 
 
+- name: Print DB2 instance "{{ user_name }}" output...
+  debug:
+    msg: "{{ db2_instance_drop }}" 
+  tags: test
+  
 - name: Remove "{{ user_name }}" user
   user:
     name: "{{ user_name }}"
