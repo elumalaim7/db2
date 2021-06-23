@@ -47,7 +47,7 @@
     line: 'INSTHOME=/home/{{ standard_user }}'
     backrefs: yes
   
-  - name: replace line DB2INSTANCE={{ user_name }} in /home/{{ standard_user }}/sqllib/db2cshrc
+- name: replace line DB2INSTANCE={{ user_name }} in /home/{{ standard_user }}/sqllib/db2cshrc
   lineinfile: 
     path: /home/{{ standard_user }}/sqllib/db2cshrc 
     regexp: '^(.*)setenv DB2INSTANCE {{ user_name }}(.*)$' 
@@ -73,7 +73,7 @@
     recurse: yes
     owner: "{{ standard_user }}"
   tags: permission
-  
+
 - name: Print instance move to "{{ db2_home }}" output...
   debug:
     msg: "{{ db2_instance_move }}" 
