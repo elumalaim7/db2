@@ -25,7 +25,7 @@
   debug:
     msg: "{{ db2_rename_instance }}" 
 
-- name: replace line DB2INSTANCE = {{ user_name }} in /home/{{ standard_user }}/sqllib/db2profile
+- name: replace line DB2INSTANCE={{ user_name }} in /home/{{ standard_user }}/sqllib/db2profile
   lineinfile: 
     path: /home/{{ standard_user }}/sqllib/db2profile 
     regexp: '^(.*)DB2INSTANCE={{ user_name }}(.*)$' 
@@ -42,9 +42,9 @@
   
 
 - name: move the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
-  command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/sqllib" 
+  command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}"/sqllib 
   register: db2_instance_move
-  
+  tags: test
 
 - name: Print instance move to "{{ db2_home }}" output...
   debug:
