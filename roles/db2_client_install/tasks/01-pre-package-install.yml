@@ -33,5 +33,6 @@
     group: "{{ group_name }}"
     shell: /bin/bash
     comment: "db2 instance account"
-    state: present    
+    state: present
+  tags: newinst    
 
