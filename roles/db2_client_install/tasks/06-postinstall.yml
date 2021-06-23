@@ -31,14 +31,15 @@
     regexp: '^(.*)DB2INSTANCE={{ user_name }}(.*)$' 
     line: 'DB2INSTANCE={{ standard_user }}'
     backrefs: yes
-  tags: rename
+  
 
 - name: replace line "{{ standard_user }}" in /home/{{ standard_user }}/sqllib/db2profile
   lineinfile: 
-    path: "/home/{{ standard_user }}/sqllib/db2profile" 
-    regexp: '^(.*)INSTHOME=/home/"{{ user_name }}"(.*)$' 
-    line: 'INSTHOME=/home/"{{ standard_user }}"'
+    path: /home/{{ standard_user }}/sqllib/db2profile 
+    regexp: '^(.*)INSTHOME=/home/{{ user_name }}(.*)$' 
+    line: 'INSTHOME=/home/{{ standard_user }}'
     backrefs: yes
+  tags: rename
 
 - name: move the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
   command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/" 
