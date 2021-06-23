@@ -6,6 +6,7 @@ db2_install_dir: /opt
 db2_home_path: /opt/ibm/db2/v11.5
 db2_inst_home: /home/"{{ user_name }}" 
 db2_home: /data/pvar/db2COND1
+db2_instance_path: /opt/ibm/db2/v11.5/instance
 
 # DB2 Installation and Instance ID
 user_name: db2inst1

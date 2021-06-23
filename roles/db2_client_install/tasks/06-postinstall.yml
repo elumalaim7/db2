@@ -1,22 +1,4 @@
 ---
-# - name: Create new instance home path "{{ standard_user }}"...
-#   file: 
-#    path: "{{ item }}"
-#    state: directory 
-#    mode: 0755
-#    owner: standard_user
-#    group: db2inst1
-#   with_items:
-#     - /home/"{{ standard_user }}"
-
-# - name: Create new instance home path "{{ standard_user }}"...
-#   command: mkdir /home/"{{ standard_user }}" 
-#   register: db2_instance_dir
-
-# - name: Print new instance home path output...
-#   debug:
-#     msg: "{{ db2_instance_dir }}" 
-
 - name: move the "{{ user_name }}" instance to "{{ standard_user }}"...
   command: mv "{{ db2_inst_home }}"/sqllib /home/"{{ standard_user }}/sqllib" 
   register: db2_rename_instance
@@ -90,11 +72,11 @@
   ignore_errors: yes
   tags: test 
 
-- name: Print DB2 instance "{{ user_name }}" output...
+- name: Print DB2 drop output
   debug:
-    msg: "{{ db2_instance_drop }}" 
+    msg: "{{ db2_instance_drop }}"
   tags: test
-  
+
 - name: Remove "{{ user_name }}" user
   user:
     name: "{{ user_name }}"
