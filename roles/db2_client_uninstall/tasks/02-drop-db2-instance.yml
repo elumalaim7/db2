@@ -2,8 +2,9 @@
 - name: Drop db2 instance "{{ user_name }}"
   command: "{{ db2_instance_path }}/db2idrop {{ user_name }}"
   register: db2_instance_drop
-  ignore_errors: yes 
-  
+  # ignore_errors: yes 
+  tags: test1 
+
 - name: Print DB2 drop output
   debug:
     msg: "{{ db2_instance_drop }}"
