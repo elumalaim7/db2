@@ -72,8 +72,7 @@
     state: directory
     recurse: yes
     owner: "{{ standard_user }}"
-  tags: permission
-
+  
 - name: Print instance move to "{{ db2_home }}" output...
   debug:
     msg: "{{ db2_instance_move }}" 
@@ -81,8 +80,12 @@
 - name: Validating DB2 
   command: "{{ db2_home }}/sqllib/bin/db2val -o"
   register: db2_val
-  tags: test
-
+  
 - name: Validate results
   debug: var=db2_val
-  tags: test
+
+- name: Drop db2 instance "{{ user_name }}"
+  command: "{{ db2_instance_path }}/db2idrop {{ user_name }}"
+  register: db2_instance_drop
+  ignore_errors: yes
+  tags: test 
