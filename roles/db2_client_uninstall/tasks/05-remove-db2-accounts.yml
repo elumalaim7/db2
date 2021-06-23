@@ -5,6 +5,12 @@
     state: absent
     remove: yes 
 
+- name: Remove "{{ standard_user }}" user
+  user:
+    name: "{{ standard_user}}"
+    state: absent
+    remove: yes 
+
 - name: Remove "{{ group_name }}" group 
   group: 
     name: "{{ group_name }}"

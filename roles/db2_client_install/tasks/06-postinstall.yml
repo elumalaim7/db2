@@ -25,7 +25,7 @@
   debug:
     msg: "{{ db2_rename_instance }}" 
 
-- name: recursively update /tmp directory owner
+- name: recursively update /home/{{ standard_user }}/sqllib directory owner
   file:
     path: /home/{{ standard_user }}/sqllib
     state: directory

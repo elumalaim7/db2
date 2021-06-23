@@ -5,6 +5,7 @@ db2_install_dir: /opt
 db2_home_path: /opt/ibm/db2/v11.5
 user_name: db2inst1
 group_name: db2inst1
+standard_user: SVC2CUXAAAS
 envir: dev
 db2_instance_path: /opt/ibm/db2/v11.5/instance
 db2_package_dir: /tmp/db2
