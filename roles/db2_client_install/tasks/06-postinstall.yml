@@ -25,6 +25,13 @@
   debug:
     msg: "{{ db2_rename_instance }}" 
 
+- name: recursively update /tmp directory owner
+  file:
+    path: /home/{{ standard_user }}/sqllib
+    state: directory
+    recurse: yes
+    owner: "{{ standard_user }}"
+
 - name: replace line DB2INSTANCE={{ user_name }} in /home/{{ standard_user }}/sqllib/db2profile
   lineinfile: 
     path: /home/{{ standard_user }}/sqllib/db2profile 
@@ -44,17 +51,17 @@
 - name: move the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
   command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/sqllib"
   register: db2_instance_move
-  tags: test
+  
 
 - name: Print instance move to "{{ db2_home }}" output...
   debug:
     msg: "{{ db2_instance_move }}" 
   
 - name: Validating DB2 
-  command: "/home/{{ standard_user }}/sqllib/bin/db2val -o"
+  command: "{{ db2_home }}"/sqllib/bin/db2val -o
   register: db2_val
-  
+  tags: test
 
 - name: Validate results
   debug: var=db2_val
-  
+  tags: test
