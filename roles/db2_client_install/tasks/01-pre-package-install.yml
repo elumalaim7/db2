@@ -34,3 +34,4 @@
     shell: /bin/bash
     comment: "db2 instance account"
     state: present    
+
