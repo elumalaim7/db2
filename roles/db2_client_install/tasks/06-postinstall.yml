@@ -1,11 +1,21 @@
 ---
-- name: Create new instance home path "{{ standard_user }}"...
-  command: mkdir /home/"{{ standard_user }}" 
-  register: db2_instance_dir
+# - name: Create new instance home path "{{ standard_user }}"...
+#   file: 
+#    path: "{{ item }}"
+#    state: directory 
+#    mode: 0755
+#    owner: standard_user
+#    group: db2inst1
+#   with_items:
+#     - /home/"{{ standard_user }}"
 
-- name: Print new instance home path output...
-  debug:
-    msg: "{{ db2_instance_dir }}" 
+# - name: Create new instance home path "{{ standard_user }}"...
+#   command: mkdir /home/"{{ standard_user }}" 
+#   register: db2_instance_dir
+
+# - name: Print new instance home path output...
+#   debug:
+#     msg: "{{ db2_instance_dir }}" 
 
 - name: move the "{{ user_name }}" instance to "{{ standard_user }}"...
   command: mv "{{ db2_inst_home }}"/sqllib /home/"{{ standard_user }}/sqllib" 
