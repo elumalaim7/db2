@@ -42,7 +42,7 @@
   
 
 - name: move the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
-  command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}"/
+  command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/sqllib"
   register: db2_instance_move
   tags: test
 
