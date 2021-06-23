@@ -42,20 +42,19 @@
   
 
 - name: move the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
-  command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/" 
+  command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/sqllib" 
   register: db2_instance_move
-  tags: rename
+  
 
 - name: Print instance move to "{{ db2_home }}" output...
   debug:
     msg: "{{ db2_instance_move }}" 
-  tags: rename
-
+  
 - name: Validating DB2 
   command: "/home/{{ standard_user }}/sqllib/bin/db2val -o"
   register: db2_val
-  tags: rename
+  
 
 - name: Validate results
   debug: var=db2_val
-  tags: rename
+  
