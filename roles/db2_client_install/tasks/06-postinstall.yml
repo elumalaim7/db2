@@ -9,14 +9,14 @@
 
  - name: replace line DB2INSTANCE = "{{ user_name }}" in /home/"{{ standard_user }}"/sqllib/db2profile
     lineinfile: 
-      path: /home/"{{ standard_user }}"/sqllib/db2profile 
+      path: "/home/{{ standard_user }}/sqllib/db2profile" 
       regexp: '^(.*)DB2INSTANCE="{{ user_name }}"(.*)$' 
       line: 'DB2INSTANCE="{{ standard_user }}"'
       backrefs: yes
 
 - name: replace line "{{ standard_user }}" in /home/{{ standard_user }}/sqllib/db2profile
     lineinfile: 
-      path: /home/{{ standard_user }}/sqllib/db2profile 
+      path: "/home/{{ standard_user }}/sqllib/db2profile" 
       regexp: '^(.*)INSTHOME=/home/"{{ user_name }}"(.*)$' 
       line: 'INSTHOME=/home/"{{ standard_user }}"'
       backrefs: yes
