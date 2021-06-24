@@ -44,10 +44,18 @@
     line: 'setenv INSTHOME /home/{{ standard_user }}'
     backrefs: yes
 
-- name: move the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
-  command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/sqllib"
-  register: db2_instance_move
+- name: Copy the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
+  command: cp -rp /home/{{ standard_user }}/sqllib "{{ db2_home }}/"
+  register: db2_instance_copy
   
+- name: Create a symbolic link
+  ansible.builtin.file:
+    src: "{{ db2_home }}/sqllib"
+    dest: /home/{{ standard_user }}/sqllib
+    owner: "{{ standard_user }}"
+    group: "{{ group_name }}"
+    state: link
+
 - name: recursively update "{{ db2_home }}"/sqllib directory owner to "{{ standard_user }}"
   file:
     path: "{{ item }}"
