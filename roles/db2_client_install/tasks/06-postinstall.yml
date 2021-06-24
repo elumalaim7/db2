@@ -48,9 +48,9 @@
   command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/sqllib"
   register: db2_instance_move
   
-- name: recursively update "{{ db2_home }}"/sqllib directory owner
+- name: recursively update "{{ db2_home }}"/sqllib directory owner {{ standard_user }}
   file:
-    path: "{{ db2_home }}/sqllib/{{ item }}"
+    path: "{{ item }}"
     state: directory
     recurse: yes
     owner: "{{ standard_user }}"
@@ -70,9 +70,9 @@
     - "{{ db2_home }}/sqllib/uif"  
   tags: test 
 
-- name: recursively update "{{ db2_home }}"/sqllib directory owner
+- name: recursively update "{{ db2_home }}"/sqllib file owner {{ standard_user }}
   file:
-    path: "{{ db2_home }}/sqllib/{{ item }}"
+    path: "{{ item }}"
     state: file
     owner: "{{ standard_user }}"
   with_items:
