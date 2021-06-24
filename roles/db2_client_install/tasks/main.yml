@@ -17,9 +17,9 @@
   import_tasks: 04-db2-instance.yml  
   tags: db2_instance_setup
 
-- name: Create DB2 Instance
-  import_tasks: 05-db2-instance-users.yml 
-  tags: db2_instance_user
+# - name: Create DB2 Instance
+#   import_tasks: 05-db2-instance-users.yml 
+#   tags: db2_instance_user
 
 - name: Post Installation
   import_tasks: 06-postinstall.yml
