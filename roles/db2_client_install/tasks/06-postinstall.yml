@@ -48,13 +48,42 @@
   command: mv /home/{{ standard_user }}/sqllib "{{ db2_home }}/sqllib"
   register: db2_instance_move
   
-# - name: recursively update "{{ db2_home }}"/sqllib directory owner
-#   file:
-#     path: "{{ db2_home }}/sqllib"
-#     state: directory
-#     recurse: yes
-#     owner: "{{ standard_user }}"
-  
+- name: recursively update "{{ db2_home }}"/sqllib directory owner
+  file:
+    path: "{{ db2_home }}/sqllib/{{ item }}"
+    state: directory
+    recurse: yes
+    owner: "{{ standard_user }}"
+  with_items:
+    - "{{ db2_home }}/sqllib/tmp"
+    - "{{ db2_home }}/sqllib/log"
+    - "{{ db2_home }}/sqllib/db2dump"
+    - "{{ db2_home }}/sqllib/ctrlha"
+    - "{{ db2_home }}/sqllib/ctrl"
+    - "{{ db2_home }}/sqllib/cfgcache"
+    - "{{ db2_home }}/sqllib/cfg"
+    - "{{ db2_home }}/sqllib/adm"
+    - "{{ db2_home }}/sqllib/backup"
+    - "{{ db2_home }}/sqllib/security64"
+    - "{{ db2_home }}/sqllib/security32"
+    - "{{ db2_home }}/sqllib/security"
+    - "{{ db2_home }}/sqllib/uif"  
+  tags: test 
+
+- name: recursively update "{{ db2_home }}"/sqllib directory owner
+  file:
+    path: "{{ db2_home }}/sqllib/{{ item }}"
+    state: file
+    owner: "{{ standard_user }}"
+  with_items:
+    - "{{ db2_home }}/sqllib/userprofile"
+    - "{{ db2_home }}/sqllib/usercshrc"
+    - "{{ db2_home }}/sqllib/global.reg"
+    - "{{ db2_home }}/sqllib/db2systm"
+    - "{{ db2_home }}/sqllib/db2profile"
+    - "{{ db2_home }}/sqllib/db2cshrc"
+  tags: test 
+
 - name: Print instance move to "{{ db2_home }}" output...
   debug:
     msg: "{{ db2_instance_move }}" 
@@ -70,16 +99,14 @@
   command: "{{ db2_instance_path }}/db2idrop {{ user_name }}"
   register: db2_instance_drop
   # ignore_errors: yes
-  tags: test 
-
+  
 - name: Print DB2 drop output
   debug:
     msg: "{{ db2_instance_drop }}"
-  tags: test
-
+  
 - name: Remove "{{ user_name }}" user
   user:
     name: "{{ user_name }}"
     state: absent
     remove: yes 
-  tags: test
+  
