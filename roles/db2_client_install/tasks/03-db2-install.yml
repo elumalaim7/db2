@@ -4,22 +4,22 @@
   register: db2_client_setup
   args: 
       creates: "{{resp.file}}"
-  tags: install
+  # tags: install
 
 - name: Setup results
   debug: var=db2_client_setup
-  tags: download
+  # tags: download
 
 - name: Validating the current installation
   command: "{{resp.file}}/bin/db2val -o"
   register: db2_val
   failed_when: "'DBI1335I' not in db2_val.stdout"
   changed_when: False
-  tags: ['install', 'validate']
+  # tags: ['install', 'validate']
 
 - name: Validate results
   debug: var=db2_val
-  tags: download
+  # tags: download
 
 
 
