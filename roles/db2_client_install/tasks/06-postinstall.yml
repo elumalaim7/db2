@@ -1,11 +1,11 @@
 ---
-- name: move the "{{ user_name }}" instance to "{{ standard_user }}"...
-  command: mv "{{ db2_inst_home }}"/sqllib /home/"{{ standard_user }}/sqllib" 
-  register: db2_rename_instance
+# - name: move the "{{ user_name }}" instance to "{{ standard_user }}"...
+#   command: mv "{{ db2_inst_home }}"/sqllib /home/"{{ standard_user }}/sqllib" 
+#   register: db2_rename_instance
 
-- name: Print rename instance output...
-  debug:
-    msg: "{{ db2_rename_instance }}" 
+# - name: Print rename instance output...
+#   debug:
+#     msg: "{{ db2_rename_instance }}" 
 
 # - name: recursively update /home/{{ standard_user }}/sqllib directory owner
 #   file:
@@ -13,6 +13,27 @@
 #     state: directory
 #     recurse: yes
 #     owner: "{{ standard_user }}"
+
+- name: Copy the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
+  copy:
+    src: /home/{{ user_name }}/sqllib
+    dest: "{{ db2_home }}/"
+    owner: "{{ standard_user }}"
+    group: "{{ group_name }}"
+  # command: cp -rp /home/{{ standard_user }}/sqllib "{{ db2_home }}/"
+  register: db2_instance_copy
+
+- name: Print instance copy to "{{ db2_home }}" output...
+  debug:
+    msg: "{{ db2_instance_copy }}" 
+
+- name: Create a symbolic link
+  ansible.builtin.file:
+    src: "{{ db2_home }}/sqllib"
+    dest: /home/{{ standard_user }}/sqllib
+    owner: "{{ standard_user }}"
+    group: "{{ group_name }}"
+    state: link
 
 - name: replace line DB2INSTANCE={{ user_name }} in /home/{{ standard_user }}/sqllib/db2profile
   lineinfile: 
@@ -44,60 +65,46 @@
     line: 'setenv INSTHOME /home/{{ standard_user }}'
     backrefs: yes
 
-- name: Copy the /home/{{ standard_user }}/sqllib instance to "{{ db2_home }}"...
-  command: cp -rp /home/{{ standard_user }}/sqllib "{{ db2_home }}/"
-  register: db2_instance_copy
-  
-- name: Create a symbolic link
-  ansible.builtin.file:
-    src: "{{ db2_home }}/sqllib"
-    dest: /home/{{ standard_user }}/sqllib
-    owner: "{{ standard_user }}"
-    group: "{{ group_name }}"
-    state: link
 
-- name: recursively update "{{ db2_home }}"/sqllib directory owner to "{{ standard_user }}"
-  file:
-    path: "{{ item }}"
-    state: directory
-    recurse: yes
-    owner: "{{ standard_user }}"
-  with_items:
-    - "{{ db2_home }}/sqllib/tmp"
-    - "{{ db2_home }}/sqllib/log"
-    - "{{ db2_home }}/sqllib/db2dump"
-    - "{{ db2_home }}/sqllib/ctrlha"
-    - "{{ db2_home }}/sqllib/ctrl"
-    - "{{ db2_home }}/sqllib/cfgcache"
-    - "{{ db2_home }}/sqllib/cfg"
-    - "{{ db2_home }}/sqllib/adm"
-    - "{{ db2_home }}/sqllib/backup"
-    - "{{ db2_home }}/sqllib/security64"
-    - "{{ db2_home }}/sqllib/security32"
-    - "{{ db2_home }}/sqllib/security"
-    - "{{ db2_home }}/sqllib/uif"  
-  tags: test 
+# - name: recursively update "{{ db2_home }}"/sqllib directory owner to "{{ standard_user }}"
+#   file:
+#     path: "{{ item }}"
+#     state: directory
+#     recurse: yes
+#     owner: "{{ standard_user }}"
+#   with_items:
+#     - "{{ db2_home }}/sqllib/tmp"
+#     - "{{ db2_home }}/sqllib/log"
+#     - "{{ db2_home }}/sqllib/db2dump"
+#     - "{{ db2_home }}/sqllib/ctrlha"
+#     - "{{ db2_home }}/sqllib/ctrl"
+#     - "{{ db2_home }}/sqllib/cfgcache"
+#     - "{{ db2_home }}/sqllib/cfg"
+#     - "{{ db2_home }}/sqllib/adm"
+#     - "{{ db2_home }}/sqllib/backup"
+#     - "{{ db2_home }}/sqllib/security64"
+#     - "{{ db2_home }}/sqllib/security32"
+#     - "{{ db2_home }}/sqllib/security"
+#     - "{{ db2_home }}/sqllib/uif"  
+#   tags: test 
 
-- name: recursively update "{{ db2_home }}"/sqllib file owner to "{{ standard_user }}"
-  file:
-    path: "{{ item }}"
-    state: file
-    owner: "{{ standard_user }}"
-  with_items:
-    - "{{ db2_home }}/sqllib/userprofile"
-    - "{{ db2_home }}/sqllib/usercshrc"
-    - "{{ db2_home }}/sqllib/global.reg"
-    - "{{ db2_home }}/sqllib/db2systm"
-    - "{{ db2_home }}/sqllib/db2profile"
-    - "{{ db2_home }}/sqllib/db2cshrc"
-  tags: test 
+# - name: recursively update "{{ db2_home }}"/sqllib file owner to "{{ standard_user }}"
+#   file:
+#     path: "{{ item }}"
+#     state: file
+#     owner: "{{ standard_user }}"
+#   with_items:
+#     - "{{ db2_home }}/sqllib/userprofile"
+#     - "{{ db2_home }}/sqllib/usercshrc"
+#     - "{{ db2_home }}/sqllib/global.reg"
+#     - "{{ db2_home }}/sqllib/db2systm"
+#     - "{{ db2_home }}/sqllib/db2profile"
+#     - "{{ db2_home }}/sqllib/db2cshrc"
+#   tags: test 
 
-- name: Print instance move to "{{ db2_home }}" output...
-  debug:
-    msg: "{{ db2_instance_move }}" 
   
 - name: Validating DB2 
-  command: "{{ db2_home }}/sqllib/bin/db2val -o"
+  command: /home/{{ standard_user }}/sqllib/bin/db2val -o
   register: db2_val
   
 - name: Validate results
