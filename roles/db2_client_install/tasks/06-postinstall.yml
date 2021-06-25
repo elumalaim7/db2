@@ -122,7 +122,7 @@
     name: "{{ user_name }}"
     state: absent
     remove: yes 
-  ignore_errors: yes
+  # ignore_errors: yes
   tags: test
 
 - name: Validating DB2 
@@ -131,7 +131,8 @@
   tags: test
 
 - name: Validate results
-  debug: var=db2_valt
+  debug:
+    msg: "{{ db2_val }}"
   tags: test
 
 - name: DB2 client delete content & directory
