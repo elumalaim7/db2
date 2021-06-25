@@ -123,20 +123,20 @@
     state: absent
     remove: yes 
   # ignore_errors: yes
-  tags: test
+  
 
 - name: Validating DB2 
   command: /home/{{ standard_user }}/sqllib/bin/db2val -o
   register: db2_val
-  tags: test
+  
 
 - name: Validate results
   debug:
     msg: "{{ db2_val }}"
-  tags: test
+  
 
 - name: DB2 client delete content & directory
   file:
     state: absent
     path: "{{ db2_package_dir }}"
-  tags: test
+  
