@@ -1,11 +1,19 @@
 ---
-- name: Drop db2 instance "{{ user_name }}"
-  command: "{{ db2_instance_path }}/db2idrop {{ user_name }}"
-  register: db2_instance_drop
-  # ignore_errors: yes 
+# - name: Drop db2 instance "{{ user_name }}"
+#   command: "{{ db2_instance_path }}/db2idrop {{ user_name }}"
+#   register: db2_instance_drop
+#   # ignore_errors: yes 
   
 
-- name: Print DB2 drop output
-  debug:
-    msg: "{{ db2_instance_drop }}"
+# - name: Print DB2 drop output
+#   debug:
+#     msg: "{{ db2_instance_drop }}"
+- name: Remove symlink "{{ standard_home }}"
+  file:
+   path: "{{ standard_home }}/sqllib"
+   state: absent
 
+- name: DB2 client delete content & directory
+  file:
+    state: absent
+    path: "{{ db2_home }}"
