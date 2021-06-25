@@ -10,5 +10,5 @@
   group: 
     name: "{{ standard_group }}"
     state: absent
-    
+  tags: test12  
 
