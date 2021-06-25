@@ -25,20 +25,20 @@
 # This can be set to false for installation without any instance.
 # create_instances: true
 
-# db2_inst_home: /home/"{{ user_name }}" 
-# db2_package: v11.5.4_linuxx64_client.tar.gz
-# tmp_dir: /tmp
-# db2_install_dir: /opt
-# db2_home_path: /opt/ibm/db2/v11.5
-# standard_home: /home/SVC2CUXAAAS
-# envir: dev
-# db2_instance_path: /opt/ibm/db2/v11.5/instance
-# db2_package_dir: /tmp/db2
-# db2_home: /data/pvar/db2COND1
+db2_inst_home: /home/"{{ user_name }}" 
+db2_package: v11.5.4_linuxx64_client.tar.gz
+tmp_dir: /tmp
+db2_install_dir: /opt
+db2_home_path: /opt/ibm/db2/v11.5
+standard_home: /home/SVC2CUXAAAS
+envir: dev
+db2_instance_path: /opt/ibm/db2/v11.5/instance
+db2_package_dir: /tmp/db2
+db2_home: /data/pvar/db2COND1
 
-# DB2 Installation and Instance ID
-# user_name: db2inst1
-# group_name: db2inst1
-# standard_user: SVC2CUXAAAS ## This variable is for more than 8 characters in instance name 
-# standard_group: SVC2CUXAAAS
+DB2 Installation and Instance ID
+user_name: db2inst1
+group_name: db2inst1
+standard_user: SVC2CUXAAAS ## This variable is for more than 8 characters in instance name 
+standard_group: SVC2CUXAAAS
 
