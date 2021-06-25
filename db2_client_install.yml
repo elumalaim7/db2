@@ -5,7 +5,7 @@
   become: true
   become_method: sudo
   vars_files:
-    # - vars_files/{{ inventory_hostname }}/dev.yml
+    - ".vars_files/{{ inventory_hostname }}/dev.yml"
   #  - vars_files/{{ inventory_hostname }}/vault.yml
   roles: 
     - db2_client_install
