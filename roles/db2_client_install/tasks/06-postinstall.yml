@@ -112,7 +112,6 @@
   register: db2_instance_drop
   # ignore_errors: yes
   
-
 - name: Print DB2 drop output
   debug:
     msg: "{{ db2_instance_drop }}"
