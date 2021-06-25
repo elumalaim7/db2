@@ -22,11 +22,13 @@
     group: "{{ group_name }}"
   # command: cp -rp /home/{{ standard_user }}/sqllib "{{ db2_home }}/"
   register: db2_instance_copy
+  tags: test
 
 - name: Print instance copy to "{{ db2_home }}" output...
   debug:
     msg: "{{ db2_instance_copy }}" 
-
+  tags: test
+  
 - name: Create a symbolic link
   ansible.builtin.file:
     src: "{{ db2_home }}/sqllib"
