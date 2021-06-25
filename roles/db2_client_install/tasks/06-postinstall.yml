@@ -129,3 +129,9 @@
   
 - name: Validate results
   debug: var=db2_valt
+
+---
+- name: DB2 client delete content & directory
+  file:
+    state: absent
+    path: "{{ db2_package_dir }}"
