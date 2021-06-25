@@ -2,25 +2,42 @@
 # defaults file for db2
 ---
 # Response file keywords: https://www-01.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.qb.server.doc/doc/r0007505.html
-resp:
-  PROD: "CLIENT"
-  FILE: "/opt/ibm/db2/V11.1"
-  LIC_AGREEMENT: "ACCEPT" # ACCEPT or DECLINE
-  INSTALL_TYPE: "TYPICAL" # TYPICAL, COMPACT, CUSTOM
+# resp:
+#   PROD: "CLIENT"
+#   FILE: "/opt/ibm/db2/V11.1"
+#   LIC_AGREEMENT: "ACCEPT" # ACCEPT or DECLINE
+#   INSTALL_TYPE: "TYPICAL" # TYPICAL, COMPACT, CUSTOM
 
 # This controls if the role should cache yum/apt
-make_cache: no
+# make_cache: no
 
 # List of instances to be created
 # NOTE: root installation is required
-db2_instances:
+# db2_instances:
   #Those five params are mandatory to create a DB2 instance
-  - instance: "DB2INST"
-    name: "db2inst1"
-    options:
-            autostart: "YES" # YES or NO
-            start_during_install: "YES" # YES or NO
+  # - instance: "DB2INST"
+  #   name: "db2inst1"
+  #   options:
+  #           autostart: "YES" # YES or NO
+  #           start_during_install: "YES" # YES or NO
 
 # Create the instances listed in 'db2_instances' variable.
 # This can be set to false for installation without any instance.
-create_instances: true
+# create_instances: true
+
+db2_inst_home: /home/"{{ user_name }}" 
+db2_package: v11.5.4_linuxx64_client.tar.gz
+tmp_dir: /tmp
+db2_install_dir: /opt
+db2_home_path: /opt/ibm/db2/v11.5
+standard_home: /home/SVC2CUXAAAS
+envir: dev
+db2_instance_path: /opt/ibm/db2/v11.5/instance
+db2_package_dir: /tmp/db2
+db2_home: /data/pvar/db2COND1
+
+# DB2 Installation and Instance ID
+user_name: db2inst1
+group_name: db2inst1
+standard_user: SVC2CUXAAAS ## This variable is for more than 8 characters in instance name 
+standard_group: SVC2CUXAAAS
