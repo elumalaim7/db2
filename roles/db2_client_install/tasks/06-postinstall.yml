@@ -15,12 +15,13 @@
 #     owner: "{{ standard_user }}"
 
 - name: Copy the /home/{{ user_name }}/sqllib instance to "{{ db2_home }}"...
-  # copy:
-  #   src: /home/{{ user_name }}/sqllib
-  #   dest: "{{ db2_home }}/"
-  #   owner: "{{ standard_user }}"
-  #   group: "{{ group_name }}"
-  command: cp -R /home/{{ standard_user }}/sqllib "{{ db2_home }}/"
+  copy:
+    src: /home/{{ user_name }}/sqllib
+    dest: "{{ db2_home }}/"
+    owner: "{{ standard_user }}"
+    group: "{{ group_name }}"
+    remote_src: yes 
+  # command: cp -R /home/{{ user_home }}/sqllib "{{ db2_home }}/"
   register: db2_instance_copy
   tags: test
 
