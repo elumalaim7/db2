@@ -23,7 +23,7 @@
     remote_src: yes 
   # command: cp -R /home/{{ user_home }}/sqllib "{{ db2_home }}/"
   register: db2_instance_copy
-  
+  tags: test
 
 - name: Print instance copy to "{{ db2_home }}" output...
   debug:

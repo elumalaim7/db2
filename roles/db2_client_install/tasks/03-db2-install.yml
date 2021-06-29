@@ -24,12 +24,12 @@
 - name: check for /home/{{ user_name }}/sqllib/db2profile
   stat: path=/home/{{ user_name }}/sqllib/db2profile 
   register: check_instance
-  
+  tags: test
 
 - name: Stop Playbook if instance not required 
-  debug: msg="DB2 installtion done... "
-  when: check_instance.stat.exists == False
-  
+  debug: msg="DB2 installation done... "
+  when: not check_instance.stat.exists == false
+  tags: test
 
 
 
