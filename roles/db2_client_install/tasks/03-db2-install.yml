@@ -28,7 +28,7 @@
 
 - name: stop playbook if instance not required 
   debug: msg="DB2 installation done... "
-  when:  check_instance.stat.exists == true
+  when:  check_instance.stat.exists == false
   tags: test
 
 
