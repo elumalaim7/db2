@@ -1,10 +1,10 @@
 ---
 - name: Execute the db2 client installation approximately 10 mins...
-  command: "{{ tmp_dir }}/db2/client/db2setup -r {{ tmp_dir }}/db2instance.rsp"
+  command: "{{ tmp_dir }}/db2/client/db2setup -r {{ tmp_dir }}/db2/db2instance.rsp"
   register: db2_client_setup
   args: 
       creates: "{{resp.file}}"
-  # tags: install
+  tags: install
 
 - name: Setup results
   debug: var=db2_client_setup
