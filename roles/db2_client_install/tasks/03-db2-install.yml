@@ -28,7 +28,7 @@
 
 - name: fail if instance not created
   debug: msg="Only installation setup... if instance required refer variable in var "
-  when: check_instance.stat.exists == == False
+  when: check_instance.stat.exists == False
   tags: test
 
 
