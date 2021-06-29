@@ -26,7 +26,7 @@
   register: check_instance
 
 - name: fail if instance not created
-  fail: msg="Only installation setup... if requiered instance {{ user_name }} refer var_file variable "
+  fail: msg="Only installation setup... if instance required refer variable in var "
   when: not check_instance.stat.exists
 
 
