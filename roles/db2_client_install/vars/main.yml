@@ -31,4 +31,4 @@ db2_instances:
 
 # Create the instances listed in 'db2_instances' variable.
 # This can be set to false for installation without any instance.
-create_instances: true
+create_instances: false
