@@ -21,5 +21,13 @@
   debug: var=db2_val
   # tags: download
 
+- name: check for foo.conf
+  stat: path=/home/{{ user_name }}/sqllib/db2profile 
+  register: check_instance
+
+- name: fail if instance not created
+  fail: msg="Only installation setup... if requiered instance {{ user_name }} refer var_file variable "
+  when: not check_instance.stat.exists
+
 
 
