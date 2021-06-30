@@ -1,6 +1,4 @@
 ---
-
-- name: DB2 Installation and Instance ID
 user_name: db2inst1
 group_name: db2inst1
 standard_user: SVC2CUXAAAS ## This variable is for more than 8 characters in instance name 
