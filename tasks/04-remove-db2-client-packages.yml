@@ -1,0 +1,5 @@
+---
+- name: DB2 client package delete content & directory
+  file:
+    state: absent
+    path: "{{ db2_package_dir }}"

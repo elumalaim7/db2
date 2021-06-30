@@ -1,0 +1,19 @@
+---
+- name: Create temp directories
+  file:
+   path: "{{ item }}"
+   state: directory
+   mode: 0777
+  with_items:
+    - "{{ tmp_dir }}/db2"
+
+- name: Unarchive the db2 packages on target server
+  unarchive:
+    src: "{{ tmp_dir }}/{{ db2_package }}"
+    dest: "{{ tmp_dir }}/db2"
+    remote_src: yes 
+    force: yes 
+
+- name: Parse response file for DB2 client uninstall
+  template: src=db2uninstall.j2.rsp dest="{{ tmp_dir }}/db2/db2uninstall.rsp"
+  tags: parse

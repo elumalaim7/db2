@@ -1,0 +1,14 @@
+---
+
+- name: Remove "{{ standard_user }}" user
+  user:
+    name: "{{ standard_user}}"
+    state: absent
+    remove: yes 
+
+- name: Remove "{{ standard_group }}" group 
+  group: 
+    name: "{{ standard_group }}"
+    state: absent
+  tags: test12  
+
