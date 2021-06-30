@@ -1,6 +1,5 @@
 ---
 # defaults file for db2
----
 # Response file keywords: https://www-01.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.qb.server.doc/doc/r0007505.html
 # resp:
 #   PROD: "CLIENT"
