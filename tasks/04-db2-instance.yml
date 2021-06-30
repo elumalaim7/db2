@@ -1,0 +1,12 @@
+---
+- name: Execute the db2 client Instance Creation...
+  command: "{{ tmp_dir }}/db2/client/db2setup -r {{ tmp_dir }}/db2/db2instance.rsp"
+  register: db2_instance_status
+
+- name: verify DB2 instance creation status
+  command: "{{ db2_home_path }}/bin/db2ilist"
+  register: db2_client_instance_status
+
+- name: Print DB2 instance output
+  debug:
+    msg: "{{ db2_client_instance_status }}" 

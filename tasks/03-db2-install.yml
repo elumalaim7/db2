@@ -1,0 +1,34 @@
+---
+- name: Execute the db2 client installation approximately 10 mins...
+  command: "{{ tmp_dir }}/db2/client/db2setup -r {{ tmp_dir }}/db2/db2_install_instance.rsp"
+  register: db2_client_setup
+  args: 
+      creates: "{{resp.file}}"
+  tags: install
+
+- name: Setup results
+  debug: var=db2_client_setup
+  # tags: download
+
+- name: Validating the current installation
+  command: "{{resp.file}}/bin/db2val -o"
+  register: db2_val
+  failed_when: "'DBI1335I' not in db2_val.stdout"
+  changed_when: False
+  # tags: ['install', 'validate']
+
+- name: Validate results
+  debug: var=db2_val
+  # tags: download
+
+- name: check for /home/{{ user_name }}/sqllib/db2profile
+  stat: path=/home/{{ user_name }}/sqllib/db2profile 
+  register: check_instance
+  
+- name: stop playbook if creation instance not required... 
+  fail: 
+   msg: "DB2 installation done and Instance creation not required..."
+  when: check_instance.stat.exists == false
+  
+
+

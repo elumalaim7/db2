@@ -1,0 +1,44 @@
+---
+- name: Create temp directories...
+  file:
+   path: "{{ item }}"
+   state: directory
+   mode: 0777
+  with_items:
+    - "{{ tmp_dir }}/db2"
+
+- name: Create installation directories and subdirectories...
+  file: 
+   path: "{{ item }}"
+   state: directory 
+   mode: 0755
+  with_items:
+    - "{{ db2_install_dir }}/ibm/"
+    - "{{ db2_install_dir }}/ibm/db2"
+
+
+# - name: copy DB2 packages to destination server
+#   copy:
+#     src: "files/{{ db2_package }}"
+#     dest: "{{ tmp_dir }}/db2/{{ db2_package }}"
+#     mode: 0755
+#     force: yes 
+
+- name: Unarchive the db2 packages on target server...
+  unarchive:
+    src: "{{ tmp_dir }}/{{ db2_package }}"
+    dest: "{{ tmp_dir }}/db2"
+    remote_src: yes 
+    # force: yes   
+  
+# - name: Parse response file for DB2 client installation...
+#   template: src=db2install.j2.rsp dest="{{ tmp_dir }}/db2/db2install.rsp"
+#   tags: parse_db2_install
+  
+- name: Parse response file for DB2 client Instance... 
+  template: src=db2_install_instance.j2.rsp dest="{{ tmp_dir }}/db2/db2_install_instance.rsp"
+  tags: parse_db2_instance
+
+
+    
+    

@@ -1,0 +1,26 @@
+---
+# Include variables at the start so they're in scope
+  
+- name: Install Prerequisties
+  import_tasks: 01-pre-package-install.yml
+  tags: precheck
+
+- name: Download Packages  
+  import_tasks: 02-db2-download.yml
+  tags: db2_download
+
+- name: Install DB2 
+  import_tasks: 03-db2-install.yml  
+  tags: db_install
+
+# - name: Setup DB2 Instance
+#   import_tasks: 04-db2-instance.yml  
+#   tags: db2_instance_setup
+
+# - name: Create DB2 Instance
+#   import_tasks: 05-db2-instance-users.yml 
+#   tags: db2_instance_user
+
+- name: Post Installation
+  import_tasks: 06-postinstall.yml
+  tags: postinstall

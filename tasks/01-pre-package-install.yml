@@ -1,0 +1,43 @@
+---
+- name: Install required packages...
+  yum:
+    name: "{{ item }}"
+    state: installed
+  loop:
+    - pam
+    - pam-devel.i686
+    - libaio
+    - compat-libstdc++-33.i686
+    - compat-libstdc++-33
+    - libstdc++-devel.i686
+    - libstdc++
+    - ksh
+    - unzip
+
+- name: Add "{{ group_name }}" group... 
+  group: 
+    name: "{{ group_name }}"
+    state: present
+
+- name: Add "{{ standard_group }}" group... 
+  group: 
+    name: "{{ standard_group }}"
+    state: present
+
+- name: Add "{{ user_name }}" user...
+  user:
+    name: "{{ user_name }}"
+    group: "{{ group_name }}"
+    shell: /bin/bash
+    comment: "db2 account"
+    state: present
+
+- name: Add "{{ standard_user }}" user...
+  user:
+    name: "{{ standard_user }}"
+    group: "{{ group_name }}"
+    shell: /bin/bash
+    comment: "db2 instance account"
+    state: present
+  tags: newinst    
+
