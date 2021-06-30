@@ -1,10 +1,5 @@
 ---
 # Include variables at the start so they're in scope
-- name: DB2 client installation
-  hosts: "{{ envir }}:&dev"
-  gather_facts: yes 
-  become: true
-  become_method: sudo
   
 - name: Install Prerequisties
   import_tasks: 01-pre-package-install.yml
